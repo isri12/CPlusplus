@@ -68,3 +68,8 @@ $ git remote -v
 $ git push origin main
 ```
 #Pushes the changes in your local repository up to the remote repository you specified as the origin
+
+```
+git branch --set-upstream-to=origin/<branch> master
+```
+set the upstream branch
