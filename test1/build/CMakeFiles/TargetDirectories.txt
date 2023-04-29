@@ -1,0 +1,3 @@
+/home/ikinfu/Documents/CPlusPlus/test1/build/CMakeFiles/rebuild_cache.dir
+/home/ikinfu/Documents/CPlusPlus/test1/build/CMakeFiles/edit_cache.dir
+/home/ikinfu/Documents/CPlusPlus/test1/build/CMakeFiles/HelloCmake.dir
