@@ -1,4 +1,4 @@
-# Basic commands
+# Linux Basic commands
 
 df -h
 
@@ -49,3 +49,18 @@ Additionally, you can also add googlemock library (C++ framework for mocking obj
 sudo cp -r ./googlemock/libgmock*.a /usr/local/lib/
 
 
+# git
+
+```
+git config --global user.email " "
+git config --global user.name " "
+```
+## Adding a local repository to GitHub using Git
+```
+$ git remote add origin <REMOTE_URL>
+```
+#Sets the new remote
+```
+$ git remote -v
+```
+#Verifies the new remote URL
