@@ -71,5 +71,16 @@ $ git push origin main
 
 ```
 git branch --set-upstream-to=origin/<branch> master
+
+git branch --set-upstream-to=origin/main master
 ```
 set the upstream branch
+
+
+
+hint:   git config pull.rebase false  # merge 
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+
+
+git push origin HEAD:main
