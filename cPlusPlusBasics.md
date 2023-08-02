@@ -1,32 +1,32 @@
 # Basics of C++
 ## 1. Variables and Data types
 ### Integer
-	- Signed  5    -5
-	- Unsigned  23u or 23U
-	- Octa 023
-	- Hex  0X3A
-	- Binary  0b1100
+- Signed  5 ,-5
+- Unsigned  23u or 23U
+- Octa 023
+- Hex  0X3A
+- Binary  0b1100
 ### Floating point	
-	- Float   23.0f,0.00f  
+- Float   23.0f,0.00f  
 ### Double
-	-  
+-  
 #### Long double
-	- 
+- 
 ### long
-	- Never less than 4 bytes [citation needed].
+- Never less than 4 bytes.
 ### long long
-   	- usually 8 bytes
+   - usually 8 bytes
 ### Char(8 bit integer or 1 byte ) 
-	- usually 1 byte, may be signed or unsigned if unqualified.  You can always formally declare a char as signed or unsigned if you need to be sure.
-	- 'a', 'x', 
-	- '\n'(new line character)
-	- '\0' (null)
+- usually 1 byte, may be signed or unsigned if unqualified.  You can always formally declare a char as signed or unsigned if you need to be sure.
+- 'a', 'x', 
+- '\n'(new line character)
+- '\0' (null)
 ### Short
 	- usually 2 bytes
 ### Boolean
-	- bool x ;
-	- True 1
-	- False 0
+- bool x ;
+- True 1
+- False 0
 
 **size_type or size_t**
 
@@ -64,7 +64,7 @@ char <= short <= int <= long <= long long
 > string cars [2] [3] = {{1,2,3},{4,5,6}}
 
 ### Constants 
-	- don’t change while execution 
+- don’t change while execution 
 	1. With preprocessor or macros
 	#define  ROOMS 4
 	
@@ -103,8 +103,68 @@ char <= short <= int <= long <= long long
 
 	// copy and customize this for every debugging line 
 	#ifdef DEBUGGING 
-cout<<"Var1 = "<<var1<<endl; 
-#endif
+	cout<<"Var1 = "<<var1<<endl; 
+	#endif
+
+### Structure 
+- containers of hetrogenous data mambers
+```cpp   
+	struct car {
+		string name;
+		int year;
+		unsigned char car_purpose;
+		string model;
+		}
+```
+### enum
+-user-defined data type that consists of integral constants
+-one benefit over constant is they provide encapsulation 
+```cpp
+	enum car_purpose {offroad,dailydriver,tow,camper};
+
+	int main(){
+	car mycar1;
+	mycar1.name= "Toyota";
+	mycar1.model="tacoma";
+	mycar1.car_purpose=offroad;
+        std::cout................................... finish.................
+	}
+```
+### Classes
+- may contain data and member functions
+  	- Example car.make, car.paint()
+- contain Public Constructor, data, and methods
+- Private data and methods
+- Destructor
+- Separate declarations and definitions in the h and cpp file respectively
+- Instance of class is called object eg. Cout,cin 
+		○ Example : make, model, year…..
+- Members maybe public or private or protected 
+- by default class members are private
+- Two types of data access
+	- setters:write into data members
+	- getters:return the values
+
+```cpp   
+//mycar.h
+	class car
+		{
+	Public:
+		string get_name(){return name;}
+		int get_model(){return model;}
+		void set_year(int y){
+			year=y;
+			}
+	Private:
+		string name;                       // class member 
+		int year;				// class member 
+		unsigned char car_purpose;		// class member 
+		string model;				// class member 
+		}
+```
+
+- 
+
 
 
 
