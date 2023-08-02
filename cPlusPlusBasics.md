@@ -1,5 +1,5 @@
 # Basics of C++
-## 1. Variables and types
+## 1. Variables and Data types
 ### Integer
 	- Signed  5    -5
 	- Unsigned  23u or 23U
@@ -33,22 +33,36 @@
 
 ### Notes 
 #### How big are all these data types? 
- Use sizeof operator sizeof(int) will return the number of bytes in an int.
-Or check <limits> file for max/min size of various data types.
+ 	- Use sizeof operator sizeof(int) will return the number of bytes in an int. Or check <limits> file for max/min size of various data types.
 
 char <= short <= int <= long <= long long
 
+	- You may have come across code where integer types are expressed as int16_t or uint32_t. Use #include <cstdint>.  There you will find std::uint32_t, std::int16_t etc.  But declared within the std:: namespace. **std::uint32_t should be preferred over uint32_t.**
 
--Use #include <cstdint>.  There you will find std::uint32_t, std::int16_t etc.  But declared within the std:: namespace.
-std::uint32_t should be preferred over uint32_t.
-
-
+##### Topics
+	-Serializing data.
+	-Packing data tightly and predictably.
+	-Performing bit operations.
 
 ------------------------------------------------------------------
 
 
 ----------------------------------------------------------------------
 ## 2. Compound Data Types
+### Array
+	-  Indexed from 0 to n-1 , n is #of elements 
+	- Implicit conversions 
+	- store multiple values in a single variable
+> string cars[4]; 
+> string cars[4] = {"Toyota", "BMW", "Ford", "Mazda"};  
+> string cars[] = {"Toyota", "BMW", "Ford", "Mazda"};  
+
+- cars[0] is toyota ,....cars[3] is mazda
+- Accessing array
+> int a = cars[0]
+-2d array
+> string cars [2] [3] = {{1,2,3},{4,5,6}}
+
 ### Constants 
 	- don’t change while execution 
 	1. With preprocessor or macros
@@ -58,47 +72,37 @@ std::uint32_t should be preferred over uint32_t.
 	const x =8;
 ### String
 	- Supported as a class
-	- #include<string>
 	- "hello there"
+ 	- Not native in C++
+	- Arrays of character (better using string than char)
+	- #include<string>
+ 
 ### Pointers
 	- Special data type for memory address
 	- Same pointer maybe used to access many different variables. 
 
-Preprocessor  directives 
-#include<iostream>    //file will be search in a pre-defined location 
+### References
 
-#define CAPACITY 5000  //the preprocessor will replace everything with 5000
 
-Constants 
--don’t change while execution 
-	1. With preprocessor or macros
-	#define  ROOMS 4
+### Dynamic Programming and Heap
+
+### Preprocessor directives 
+	#include<iostream>    //file will be search in a pre-defined location 
+	#define CAPACITY 5000  //the preprocessor will replace everything with 5000
 	
-	2. Declarations 
-	const x =8;
+
 	
-ARRAY
-	- Indexed from 0 to n-1 , n is #of elements
-	-   Int age[];
-	- Age[0],age[1],age[2],age[3] 
-	- Implicit conversions 
-Strings
-	- Not native in C++
-	- Arrays of character (better using string than char)
-	- #include<string>
-	
-Type casting 
-	- Explicitly specifying the data type of an expression.
-Suppose you want to have several lines of code that print data out for debugging purposes, but you don't want those lines to make it to the final application, for efficiency reasons. Which of the following achieves the desired behavior by using preprocessor directives?
-
-From <https://www.linkedin.com/learning/learning-c-plus-plus-14267389/quiz/urn:li:learningApiAssessment:38152423?resume=false&u=47981556> 
+### Type casting 
+	-  Explicitly specifying the data type of an expression.
+	-  Suppose you want to have several lines of code that print data out for debugging purposes, but you don't want those lines to make it to the final application, for efficiency reasons. Which of the following achieves the desired behavior by using preprocessor directives?
 
 
-// comment the following line for the final application 
-#define DEBUGGING 
+### DEBUGGING
+	// comment the following line for the final application 
+	#define DEBUGGING 
 
-// copy and customize this for every debugging line 
-#ifdef DEBUGGING 
+	// copy and customize this for every debugging line 
+	#ifdef DEBUGGING 
 cout<<"Var1 = "<<var1<<endl; 
 #endif
 
