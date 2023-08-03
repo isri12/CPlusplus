@@ -71,17 +71,111 @@ char <= short <= int <= long <= long long
 	2. Declarations 
 	const x =8;
 ### String
-	- Supported as a class
-	- "hello there"
- 	- Not native in C++
-	- Arrays of character (better using string than char)
-	- #include<string>
- 
-### Pointers
-	- Special data type for memory address
-	- Same pointer maybe used to access many different variables. 
+- Supported as a class
+-  Not native in C++
+-  Arrays of character (better using string than char). string is actually a
+   one-dimensional array of characters which is terminated by a null character '\0
+-  The standard C++ library provides a string class type. #include<string>
 
-### References
+```cpp
+#include <iostream>
+using namespace std;
+
+int main () {
+   char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\0'};   //using character
+   cout << "Greeting message: ";
+   cout << greeting << endl;
+   return 0;
+}
+```
+
+```cpp
+#include <iostream>
+#include <string>   //using array
+
+using namespace std;
+
+int main () {
+
+   string str1 = "Hello";
+   string str2 = "World";
+   string str3;
+   int  len ;
+
+   // copy str1 into str3
+   str3 = str1;
+   cout << "str3 : " << str3 << endl;
+
+   // concatenates str1 and str2
+   str3 = str1 + str2;
+   cout << "str1 + str2 : " << str3 << endl;
+
+   // total length of str3 after concatenation
+   len = str3.size();
+   cout << "str3.size() :  " << len << endl;
+
+   return 0;
+}
+
+```
+### References 
+-we can get the memory address of a variable by using the & operator
+```cpp
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string car = "Toyota"; // A car variable of type string
+
+    std::cout << car << std::endl; // Outputs the value of food (Toyota)
+    std::cout << &car; // Outputs the memory address of food (0x7fff996e11f0)
+}
+```
+> Toyota
+> 0x7fff996e11f0
+### Pointers
+-variables that store the memory addresses of other variables. 
+- Special data type for memory address
+- Same pointer maybe used to access many different variables. 
+Example 
+```cpp
+#include <iostream>
+
+void changeValue(int &ref){
+    ref = 20;
+}
+
+int main()
+{
+    int a=5;
+    std::cout<<"Variable a : "<<a<<std::endl;  //5
+    std::cout<<"Address of Variable : "<<&a<<std::endl; //0x7fff2c19510c
+  
+    int *ptr=&a;
+    std::cout<<"*ptr : "<<*ptr<<std::endl;  //5     *ptr equals variable a
+    std::cout<<"ptr : "<<ptr<<std::endl;  //0x7fff2c19510c  same as &a equals ptr
+    
+    int &ref=a;      // & Sign indicates that is a reference,not an address.
+    std::cout<<"&ref : "<<&ref<<std::endl;  //0x7fff2c19510c
+    
+    ref++;
+    std::cout<<"new a : "<<a<<std::endl;  // 6
+
+    changeValue(a);    //call by reference 
+    std::cout<<"changeValue a : "<<a<<std::endl;  // 20
+}
+```
+
+
+
+
+
+
+
+ 
+
+
 
 
 ### Dynamic Programming and Heap
@@ -135,36 +229,112 @@ char <= short <= int <= long <= long long
   	- Example car.make, car.paint()
 - contain Public Constructor, data, and methods
 - Private data and methods
-- Destructor
 - Separate declarations and definitions in the h and cpp file respectively
 - Instance of class is called object eg. Cout,cin 
 		○ Example : make, model, year…..
-- Members maybe public or private or protected 
+- Members maybe **public** or **private** or **protected** 
 - by default class members are private
 - Two types of data access
-	- setters:write into data members
-	- getters:return the values
-
+	- **setters**:write into data members
+	- **getters**:return the values
+-.h header file: contain class definations and function declarations
+-.cpp implementation file: contain executable code,must contain header file. 
 ```cpp   
 //mycar.h
 	class car
 		{
 	Public:
-		string get_name(){return name;}
-		int get_model(){return model;}
-		void set_year(int y){
-			year=y;
-			}
+		std::string get_name();
+		int get_model();
+		void set_year(int y);
 	Private:
-		string name;                       // class member 
+		std::string name;                       // class- or data member 
 		int year;				// class member 
 		unsigned char car_purpose;		// class member 
-		string model;				// class member 
+		std::string model;				// class member 
 		}
 ```
+```cpp
+//mycar.cpp
+#include "car.h"
 
-- 
+std::string get_name()
+{
+	return name;
+}
+int get_model()
+{
+	return model;
+}
+void set_year(int y)
+{
+	year=y;
+}
+
+```
+- **Construcror**:
+- - **Destructor**
+- **Operator Overload**: 
+-pragma once **vs** #ifdef CAR_H .... #define CAR_H.....#endif //CAR_H (include gard)
 
 
+**Review code**
+```cpp
+// compile: g++ -std=c++11 -o pointers pointers.cpp
+#include <iostream>
+#include <string>
 
+typedef struct Student {
+    int id;
+    char *f_name;
+    char *l_name;
+    int n_assignments;
+    double *grades;
+} Student;
 
+int promptInt(std::string message, int min, int max);
+double promptDouble(std::string message, double min, double max);
+void calculateStudentAverage(void *object, double *avg);
+
+int main(int argc, char **argv)
+{
+    Student student;
+    double average;
+
+    // Sequence of user input -> store in fields of `student`
+
+    // Call `CalculateStudentAverage(???, ???)`
+    // Output `average`
+
+    return 0;
+}
+
+/*
+   message: text to output as the prompt
+   min: minimum value to accept as a valid int
+   max: maximum value to accept as a valid int
+*/
+int promptInt(std::string message, int min, int max)
+{
+    // Code to prompt user for an int
+}
+
+/*
+   message: text to output as the prompt
+   min: minimum value to accept as a valid double
+   max: maximum value to accept as a valid double
+*/
+double promptDouble(std::string message, double min, double max)
+{
+    // Code to prompt user for a double
+}
+
+/*
+   object: pointer to anything - your choice! (but choose something that will be helpful)
+   avg: pointer to a double (can store a value here)
+*/
+void calculateStudentAverage(void *object, double *avg)
+{
+    // Code to calculate and store average grade
+}
+```
